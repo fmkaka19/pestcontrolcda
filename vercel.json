@@ -1,0 +1,106 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/about.html",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/ant-control.html",
+      "destination": "/ant-control",
+      "permanent": true
+    },
+    {
+      "source": "/blog.html",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/carpenter-ant-control.html",
+      "destination": "/carpenter-ant-control",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/flea-control.html",
+      "destination": "/flea-control",
+      "permanent": true
+    },
+    {
+      "source": "/locations.html",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/pest-control-coeur-dalene-junction.html",
+      "destination": "/pest-control-coeur-dalene-junction",
+      "permanent": true
+    },
+    {
+      "source": "/pest-control-hayden-lake.html",
+      "destination": "/pest-control-hayden-lake",
+      "permanent": true
+    },
+    {
+      "source": "/pest-control-post-falls.html",
+      "destination": "/pest-control-post-falls",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy.html",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/roach-control.html",
+      "destination": "/roach-control",
+      "permanent": true
+    },
+    {
+      "source": "/services.html",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/spider-control.html",
+      "destination": "/spider-control",
+      "permanent": true
+    },
+    {
+      "source": "/bed-bug-treatment.html",
+      "destination": "/bed-bug-treatment",
+      "permanent": true
+    },
+    {
+      "source": "/rodent-control.html",
+      "destination": "/rodent-control",
+      "permanent": true
+    },
+    {
+      "source": "/wasp-control.html",
+      "destination": "/wasp-control",
+      "permanent": true
+    },
+    {
+      "source": "/yellow-jacket-control.html",
+      "destination": "/yellow-jacket-control",
+      "permanent": true
+    },
+    {
+      "source": "/mosquito-control.html",
+      "destination": "/mosquito-control",
+      "permanent": true
+    }
+  ]
+}
