@@ -1,40 +1,45 @@
-# Coeur d'Alene ID
 
-This is a professional website for North Idaho pest control, specializing in services.
 
-## Files Included
+# North Idaho Pest Control
 
-- `index.html` - Homepage
-- `about.html` - About page
-- `contact.html` - Contact page
-- `privacy-policy.html` - Privacy policy page
-- `services/` - Individual service pages
-- `locations/` - Individual location pages
-- `styles.css` - Stylesheet
-- `custom.js` - JavaScript functionality
-- `sitemap.xml` - SEO sitemap
-- `robots.txt` - Search engine directives
-- `.htaccess` - Clean-URL rules for Apache/LiteSpeed hosts (cPanel, SiteGround, Hostinger)
-- `_redirects`, `netlify.toml`, `vercel.json` - Same rules for Netlify / Vercel / Cloudflare Pages
+Official website for **North Idaho Pest Control**, providing local pest control services for homes, businesses, and residential properties across Coeur d'Alene and North Idaho communities.
 
-## Setup Instructions
+- **Phone:** (208) 248-2701
+- **Email:** info@pestcontrolcoeurdalene.com
+- **Website:** https://nortidahopestcontrol.com
 
-1. Upload all files to your web hosting provider
-2. Ensure all files are in the root directory
-3. **Shared/cPanel hosting:** make sure `.htaccess` uploaded too. It starts with a
-   dot, so file managers hide it by default — turn on "show hidden files" and
-   confirm it sits next to `index.html`. Without it every page except the
-   homepage returns 404.
-4. Test the website functionality
-5. Update contact information as needed
+---
 
-## Features
+## Services (8 Dedicated Pages)
+- **Ant Control** (`/ant-control`)
+- **Carpenter Ant Control** (`/carpenter-ant-control`)
+- **Spider Control** (`/spider-control`)
+- **Flea Control** (`/flea-control`)
+- **Roach Control** (`/roach-control`)
+- **Bed Bug Treatment** (`/bed-bug-treatment`)
+- **Rodent Control** (`/rodent-control`)
+- **Mosquito Control** (`/mosquito-control`)
 
-- Responsive design
-- SEO optimized
-- Professional styling
-- Contact form functionality
-- Mobile-friendly navigation
-- Dynamic service and location pages
+---
 
-Generated with Ranklocal - Professional website creation tool.
+## Location Pages (10 Communities)
+1. **Hayden Lake, ID** (`/pest-control-hayden-lake`)
+2. **Post Falls, ID** (`/pest-control-post-falls`)
+3. **Coeur d'Alene Junction, ID** (`/pest-control-coeur-dalene-junction`)
+4. **Rathdrum, ID** (`/pest-control-rathdrum`)
+5. **Athol, ID** (`/pest-control-athol`)
+6. **Spirit Lake, ID** (`/pest-control-spirit-lake`)
+7. **Sagle, ID** (`/pest-control-sagle`)
+8. **Sandpoint, ID** (`/pest-control-sandpoint`)
+9. **East Greenacres, ID** (`/pest-control-east-greenacres`)
+10. **Clarksville, ID** (`/pest-control-clarksville`)
+
+---
+
+## Deployment & Hosting
+- `.htaccess` - Clean URL rewrites for Apache / LiteSpeed servers
+- `_redirects` - Redirect rules for Netlify & Cloudflare Pages
+- `netlify.toml` - Netlify deployment configuration
+- `vercel.json` - Vercel clean URL & redirect configuration
+- `sitemap.xml` - XML sitemap listing all 24 canonical pages
+- `robots.txt` - Search engine crawler directives
