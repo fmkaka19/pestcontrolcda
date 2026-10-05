@@ -2,105 +2,29 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    {
-      "source": "/index.html",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/about.html",
-      "destination": "/about",
-      "permanent": true
-    },
-    {
-      "source": "/ant-control.html",
-      "destination": "/ant-control",
-      "permanent": true
-    },
-    {
-      "source": "/blog.html",
-      "destination": "/blog",
-      "permanent": true
-    },
-    {
-      "source": "/carpenter-ant-control.html",
-      "destination": "/carpenter-ant-control",
-      "permanent": true
-    },
-    {
-      "source": "/contact.html",
-      "destination": "/contact",
-      "permanent": true
-    },
-    {
-      "source": "/flea-control.html",
-      "destination": "/flea-control",
-      "permanent": true
-    },
-    {
-      "source": "/locations.html",
-      "destination": "/locations",
-      "permanent": true
-    },
-    {
-      "source": "/pest-control-coeur-dalene-junction.html",
-      "destination": "/pest-control-coeur-dalene-junction",
-      "permanent": true
-    },
-    {
-      "source": "/pest-control-hayden-lake.html",
-      "destination": "/pest-control-hayden-lake",
-      "permanent": true
-    },
-    {
-      "source": "/pest-control-post-falls.html",
-      "destination": "/pest-control-post-falls",
-      "permanent": true
-    },
-    {
-      "source": "/privacy-policy.html",
-      "destination": "/privacy-policy",
-      "permanent": true
-    },
-    {
-      "source": "/roach-control.html",
-      "destination": "/roach-control",
-      "permanent": true
-    },
-    {
-      "source": "/services.html",
-      "destination": "/services",
-      "permanent": true
-    },
-    {
-      "source": "/spider-control.html",
-      "destination": "/spider-control",
-      "permanent": true
-    },
-    {
-      "source": "/bed-bug-treatment.html",
-      "destination": "/bed-bug-treatment",
-      "permanent": true
-    },
-    {
-      "source": "/rodent-control.html",
-      "destination": "/rodent-control",
-      "permanent": true
-    },
-    {
-      "source": "/wasp-control.html",
-      "destination": "/wasp-control",
-      "permanent": true
-    },
-    {
-      "source": "/yellow-jacket-control.html",
-      "destination": "/yellow-jacket-control",
-      "permanent": true
-    },
-    {
-      "source": "/mosquito-control.html",
-      "destination": "/mosquito-control",
-      "permanent": true
-    }
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/about.html", "destination": "/about", "permanent": true },
+    { "source": "/services.html", "destination": "/services", "permanent": true },
+    { "source": "/locations.html", "destination": "/locations", "permanent": true },
+    { "source": "/contact.html", "destination": "/contact", "permanent": true },
+    { "source": "/privacy-policy.html", "destination": "/privacy-policy", "permanent": true },
+    { "source": "/ant-control.html", "destination": "/ant-control", "permanent": true },
+    { "source": "/carpenter-ant-control.html", "destination": "/carpenter-ant-control", "permanent": true },
+    { "source": "/spider-control.html", "destination": "/spider-control", "permanent": true },
+    { "source": "/flea-control.html", "destination": "/flea-control", "permanent": true },
+    { "source": "/roach-control.html", "destination": "/roach-control", "permanent": true },
+    { "source": "/bed-bug-treatment.html", "destination": "/bed-bug-treatment", "permanent": true },
+    { "source": "/rodent-control.html", "destination": "/rodent-control", "permanent": true },
+    { "source": "/mosquito-control.html", "destination": "/mosquito-control", "permanent": true },
+    { "source": "/pest-control-hayden-lake.html", "destination": "/pest-control-hayden-lake", "permanent": true },
+    { "source": "/pest-control-post-falls.html", "destination": "/pest-control-post-falls", "permanent": true },
+    { "source": "/pest-control-coeur-dalene-junction.html", "destination": "/pest-control-coeur-dalene-junction", "permanent": true },
+    { "source": "/pest-control-rathdrum.html", "destination": "/pest-control-rathdrum", "permanent": true },
+    { "source": "/pest-control-athol.html", "destination": "/pest-control-athol", "permanent": true },
+    { "source": "/pest-control-spirit-lake.html", "destination": "/pest-control-spirit-lake", "permanent": true },
+    { "source": "/pest-control-sagle.html", "destination": "/pest-control-sagle", "permanent": true },
+    { "source": "/pest-control-sandpoint.html", "destination": "/pest-control-sandpoint", "permanent": true },
+    { "source": "/pest-control-east-greenacres.html", "destination": "/pest-control-east-greenacres", "permanent": true },
+    { "source": "/pest-control-clarksville.html", "destination": "/pest-control-clarksville", "permanent": true }
   ]
 }
