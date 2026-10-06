@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pest Control Insights &amp; Guides | North Idaho Pest Control</title>
-    <meta name="description" content="Expert pest prevention guides for North Idaho homeowners. Learn how to identify carpenter ants, seal crawl spaces against rodents, and keep garages spider-free." />
+    <title>Pest Control Blog &amp; Local Guides | North Idaho Pest Control</title>
+    <meta name="description" content="Expert local pest prevention guides for North Idaho homeowners. Read our practical guides on rodent proofing in Rathdrum, fall carpenter ants in Hayden, and winter bed bug prevention in Spirit Lake." />
     <link rel="canonical" href="https://nortidahopestcontrol.com/blog" />
 
     <!-- JSON-LD: Blog & Breadcrumbs Schema -->
@@ -37,67 +37,201 @@
     <link rel="stylesheet" href="assets/global.css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
-      .t6-article-content h3 {
+      /* Blog Card Grid Styles */
+      .t6-blog-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+      @media (max-width: 1024px) {
+        .t6-blog-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.75rem;
+        }
+      }
+      @media (max-width: 680px) {
+        .t6-blog-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .t6-blog-card {
+        background: #ffffff;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        border: 1px solid rgba(23, 34, 7, 0.08);
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        cursor: pointer;
+      }
+      .t6-blog-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 16px 36px rgba(23, 34, 7, 0.12);
+      }
+      .t6-blog-card__image-wrap {
+        aspect-ratio: 16 / 10;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        background: #f0f3ea;
+      }
+      .t6-blog-card__image-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.35s ease;
+      }
+      .t6-blog-card:hover .t6-blog-card__image-wrap img {
+        transform: scale(1.04);
+      }
+      .t6-blog-card__body {
+        padding: 1.75rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+      .t6-blog-card__category {
         font-family: var(--font-display);
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--t6-green-dark, #58801d);
+        margin-bottom: 0.65rem;
+        display: block;
+      }
+      .t6-blog-card__title {
+        font-family: var(--font-display);
+        font-size: 1.28rem;
+        font-weight: 700;
+        color: var(--t6-ink, #172207);
+        line-height: 1.35;
+        margin: 0 0 0.85rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .t6-blog-card__excerpt {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: var(--t6-muted, #555e4b);
+        margin: 0 0 1.5rem;
+        flex: 1;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .t6-blog-card__divider {
+        border-top: 1px dashed rgba(23, 34, 7, 0.15);
+        margin-bottom: 1rem;
+      }
+      .t6-blog-card__meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.85rem;
+        color: rgba(23, 34, 7, 0.6);
+        font-weight: 500;
+      }
+      .t6-blog-card__read-btn {
+        margin-top: 1rem;
+        font-family: var(--font-display);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--t6-green-dark);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      /* Modal Reader Styles */
+      .t6-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: rgba(23, 34, 7, 0.72);
+        backdrop-filter: blur(5px);
+        overflow-y: auto;
+        padding: 2rem 1rem;
+        align-items: center;
+        justify-content: center;
+      }
+      .t6-modal.is-active {
+        display: flex;
+      }
+      .t6-modal__dialog {
+        background: #ffffff;
+        border-radius: 16px;
+        max-width: 820px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+        position: relative;
+        padding: clamp(1.75rem, 4vw, 3rem);
+      }
+      .t6-modal__close {
+        position: absolute;
+        top: 1.25rem;
+        right: 1.25rem;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--t6-cream, #faf7f2);
+        border: 1px solid var(--t6-hairline);
+        display: flex;
+        align-items: center;
+        justify-content: center;
         font-size: 1.35rem;
+        cursor: pointer;
+        color: var(--t6-ink);
+        transition: background 0.15s ease;
+      }
+      .t6-modal__close:hover {
+        background: #ebe6dc;
+      }
+      .t6-modal-content h3 {
+        font-family: var(--font-display);
+        font-size: 1.3rem;
         font-weight: 700;
         color: var(--t6-ink);
         margin: 1.75rem 0 0.65rem;
-        line-height: 1.3;
       }
-      .t6-article-content p {
+      .t6-modal-content p {
         font-size: 1.02rem;
         line-height: 1.75;
         color: var(--t6-text);
-        margin: 0 0 1.15rem;
+        margin-bottom: 1.15rem;
       }
-      .t6-article-content ul {
+      .t6-modal-content ul {
         margin: 0 0 1.35rem 1.25rem;
         padding: 0;
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
       }
-      .t6-article-content li {
+      .t6-modal-content li {
         font-size: 1rem;
         line-height: 1.65;
         color: var(--t6-text);
       }
-      .t6-pro-tip {
+      .t6-modal-tip {
         background: var(--t6-cream);
         border-left: 4px solid var(--t6-green);
         padding: 1.15rem 1.35rem;
         border-radius: 0 8px 8px 0;
         margin: 1.5rem 0;
       }
-      .t6-pro-tip p {
+      .t6-modal-tip p {
         margin: 0;
         font-size: 0.95rem;
         line-height: 1.6;
         color: var(--t6-ink);
-      }
-      .t6-blog-card {
-        background: #fff;
-        border: 1px solid var(--t6-hairline);
-        border-radius: 12px;
-        overflow: hidden;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-      .t6-blog-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 28px rgba(23, 34, 7, 0.08);
-      }
-      .t6-badge-cat {
-        display: inline-block;
-        font-family: var(--font-display);
-        font-size: 0.76rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        background: rgba(169, 223, 89, 0.25);
-        color: var(--t6-ink);
-        padding: 0.35rem 0.75rem;
-        border-radius: 999px;
       }
     </style>
   </head>
@@ -254,7 +388,7 @@
               </span>
             </a>
           </div>
-          <a href="locations" class="t6-nav-panel-all">View all service areas &rarr;</a>
+          <a href="locations" class="t6-nav-panel-all">View all 10 service areas &rarr;</a>
         </div>
       </div>
       <a href="blog" class="t6-nav-link" style="color:var(--t6-green-dark);font-weight:600;">Blog</a>
@@ -388,215 +522,237 @@
         <ol style="display:flex;gap:.6rem;list-style:none;margin:0;padding:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;color:rgba(250,247,242,.7);">
           <li><a href="/" style="color:inherit;text-decoration:none;">Home</a></li>
           <li>/</li>
-          <li style="color:var(--t6-green);">Blog &amp; Field Insights</li>
+          <li style="color:var(--t6-green);">Blog</li>
         </ol>
       </nav>
       <div style="max-width:760px;color:#fff;" data-sal="slide-up">
-        <h1 style="color:#fff;margin:0 0 1rem;font-size:clamp(2.2rem, 4vw, 3.2rem);line-height:1.15;">North Idaho Pest Prevention &amp; Home Care</h1>
+        <h1 style="color:#fff;margin:0 0 1rem;font-size:clamp(2.2rem, 4vw, 3.2rem);line-height:1.15;">North Idaho Pest Prevention &amp; Field Guides</h1>
         <p style="color:rgba(250,247,242,.92);font-size:1.12rem;line-height:1.7;margin:0 0 1.5rem;">
-          Practical, field-tested guidance on seasonal insect behavior, rodent exclusion, and moisture-related property defense. Written by local technicians who inspect and treat crawl spaces, attics, and structures across North Idaho every day.
+          Practical, seasonal advice for North Idaho homeowners. Learn how to protect foundations, identify wood-destroying carpenter ants, and prevent pest intrusions across Rathdrum, Hayden, Spirit Lake, and surrounding areas.
         </p>
-        <div style="display:flex;gap:.75rem;flex-wrap:wrap;align-items:center;">
-          <span style="font-size:.85rem;color:rgba(255,255,255,.75);display:inline-flex;align-items:center;gap:.4rem;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t6-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Integrated Pest Management (IPM)
-          </span>
-          <span style="color:rgba(255,255,255,.4);">&bull;</span>
-          <span style="font-size:.85rem;color:rgba(255,255,255,.75);display:inline-flex;align-items:center;gap:.4rem;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t6-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Label-Compliant Application
-          </span>
-          <span style="color:rgba(255,255,255,.4);">&bull;</span>
-          <span style="font-size:.85rem;color:rgba(255,255,255,.75);display:inline-flex;align-items:center;gap:.4rem;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t6-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg> Direct Phone Consultation
-          </span>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- Featured Blog Articles Grid -->
-  <section class="t6-section t6-band-cream" style="padding:4.5rem 0;">
+  <!-- 3-Column Blog Cards Grid Section -->
+  <section class="t6-section t6-band-cream" style="padding:5rem 0;">
     <div class="t6-container">
       
-      <!-- Article 1 -->
-      <article id="crawl-space-rodent-prevention" class="t6-blog-card" style="margin-bottom:3.5rem;" data-sal="slide-up">
-        <div style="display:grid;grid-template-columns:1fr;gap:0;">
-          <div style="aspect-ratio:16 / 7;position:relative;overflow:hidden;background:#222;">
-            <img src="assets/images/gen/rodent-inspection-foundation.jpg" alt="Technician inspecting crawl space vents and foundation gaps for rodent intrusion" style="width:100%;height:100%;object-fit:cover;" loading="eager" />
+      <div class="t6-blog-grid">
+        
+        <!-- Card 1 -->
+        <article class="t6-blog-card" onclick="openBlogModal('modal-blog-1')" tabindex="0" role="button" aria-haspopup="dialog" onkeydown="if(event.key==='Enter'||event.key===' ')openBlogModal('modal-blog-1')">
+          <div class="t6-blog-card__image-wrap">
+            <img src="assets/images/gen/rodent-inspection-foundation.jpg" alt="Technician inspecting crawl space and foundation for mice and rats in Rathdrum" loading="eager" />
           </div>
-          <div style="padding:clamp(1.75rem, 3.5vw, 3rem);">
-            <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;">
-              <span class="t6-badge-cat">Structural Defense &amp; Rodents</span>
-              <span style="font-size:.85rem;color:var(--t6-muted);display:inline-flex;align-items:center;gap:.35rem;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 6 Min Read
-              </span>
-              <span style="font-size:.85rem;color:var(--t6-muted);">Published: October 2026</span>
+          <div class="t6-blog-card__body">
+            <span class="t6-blog-card__category">LOCAL GUIDES</span>
+            <h2 class="t6-blog-card__title">Rodent Proofing Rathdrum Homes for the Coming Winter</h2>
+            <p class="t6-blog-card__excerpt">Learn how to secure your Rathdrum home against winter mice and rat invasions with these expert rodent proofing and exclusion tips.</p>
+            <div class="t6-blog-card__divider"></div>
+            <div class="t6-blog-card__meta">
+              <span>October 2026</span>
+              <span>10 min read</span>
             </div>
-
-            <h2 style="font-size:clamp(1.6rem, 2.5vw, 2.2rem);margin:0 0 1rem;line-height:1.25;color:var(--t6-ink);">
-              Why Effective Pest Defense in North Idaho Begins in the Crawl Space
-            </h2>
-
-            <p style="font-size:1.08rem;line-height:1.75;color:var(--t6-text);margin-bottom:1.5rem;">
-              Seeing a mouse in your garage or finding droppings near the water heater rarely means the rodent entered through an open front door. In rural acreage, lakeside properties, and prairie subdivisions alike, the primary highway into a building is almost always subterranean. Understanding how crawl space dynamics interact with seasonal temperature drops is the key to lasting exclusion.
-            </p>
-
-            <div class="t6-article-content">
-              <h3>The Physics of the "Stack Effect"</h3>
-              <p>
-                During cold North Idaho autumns and winters, warm indoor air rises and escapes through attic vents and roof soffits. This upward thermal movement creates negative pressure on the lower levels of the house, actively pulling air—and warm scented drafts—up from the crawl space through subfloor penetrations, pipe chases, and electrical cutouts.
-              </p>
-              <p>
-                To a deer mouse or field rat foraging in autumn mulch, that warm draft leaking from a foundation vent or loose crawl hatch acts like an open beacon. Once an animal enters the unconditioned space below your flooring, it enjoys quiet shelter, insulation for nesting, and direct vertical routes into wall cavities.
-              </p>
-
-              <h3>Common Access Points That Go Unnoticed</h3>
-              <p>
-                During on-site inspections across Coeur d'Alene, Post Falls, and Hayden Lake, our technicians frequently discover entry gaps that measure less than a half-inch wide:
-              </p>
-              <ul>
-                <li><strong>Foundation Vent Screening:</strong> Standard builder-grade wire mesh degrades over time or pulls away from mortar, allowing mice (which can squeeze through openings the size of a dime) uninhibited access.</li>
-                <li><strong>HVAC &amp; Refrigerant Lines:</strong> Where heat pump lines and drain pipes penetrate through rim joists or concrete walls, foam insulation frequently shrinks or gets gnawed away.</li>
-                <li><strong>Crawl Space Access Wells:</strong> Wooden hatches resting directly on soil rot or warp, leaving generous crawl openings under landscaping beds.</li>
-                <li><strong>Sill Plate Junctions:</strong> Gaps between the top of the poured concrete foundation and the wooden mudsill frequently admit both rodents and moisture-seeking beetles.</li>
-              </ul>
-
-              <div class="t6-pro-tip">
-                <p><strong>Field Tip from Our Techs:</strong> Laying poison pellets inside a living room or kitchen often causes mice to die out of reach inside wall cavities, resulting in severe odor and fly issues. Physical exclusion—sealing vents with galvanized hardware cloth and expanding copper mesh—stops the entry cycle permanently at the source.</p>
-              </div>
-
-              <h3>Moisture Management and Secondary Invaders</h3>
-              <p>
-                A damp crawl space does not merely invite rodents. Unmitigated ground moisture rots structural rim joists, which immediately draws carpenter ants and fungal gnats. Furthermore, quiet subfloor voids provide ideal humidity for hobo and wolf spiders hunting nocturnal insects. Installing a durable vapor barrier and ensuring downspouts channel snowmelt well away from the perimeter is as critical to pest defense as any direct treatment.
-              </p>
-            </div>
-
-            <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--t6-hairline);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
-              <span style="font-size:.9rem;color:var(--t6-muted);">Need your foundation or subfloor inspected?</span>
-              <a href="rodent-control" class="t6-btn t6-btn-primary" style="font-size:.92rem;padding:.65rem 1.25rem;">Learn About Rodent Exclusion &rarr;</a>
-            </div>
+            <span class="t6-blog-card__read-btn">Read Full Guide &rarr;</span>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <!-- Article 2 -->
-      <article id="carpenter-ants-vs-pavement-ants" class="t6-blog-card" style="margin-bottom:3.5rem;" data-sal="slide-up">
-        <div style="display:grid;grid-template-columns:1fr;gap:0;">
-          <div style="aspect-ratio:16 / 7;position:relative;overflow:hidden;background:#222;">
-            <img src="assets/images/gen/detailed-macro-photography-of-a-camponotus-ant-o-2a2d4715.webp" alt="Macro photography of a carpenter ant Camponotus worker on textured wood" style="width:100%;height:100%;object-fit:cover;" loading="lazy" />
+        <!-- Card 2 -->
+        <article class="t6-blog-card" onclick="openBlogModal('modal-blog-2')" tabindex="0" role="button" aria-haspopup="dialog" onkeydown="if(event.key==='Enter'||event.key===' ')openBlogModal('modal-blog-2')">
+          <div class="t6-blog-card__image-wrap">
+            <img src="assets/images/gen/detailed-macro-photography-of-a-camponotus-ant-o-2a2d4715.webp" alt="Close-up of a carpenter ant on wood framing in Hayden residence" loading="lazy" />
           </div>
-          <div style="padding:clamp(1.75rem, 3.5vw, 3rem);">
-            <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;">
-              <span class="t6-badge-cat">Species Identification &amp; Wood Defense</span>
-              <span style="font-size:.85rem;color:var(--t6-muted);display:inline-flex;align-items:center;gap:.35rem;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 16 14"/></svg> 5 Min Read
-              </span>
-              <span style="font-size:.85rem;color:var(--t6-muted);">Published: October 2026</span>
+          <div class="t6-blog-card__body">
+            <span class="t6-blog-card__category">PEST CONTROL</span>
+            <h2 class="t6-blog-card__title">The Hidden Danger of Fall Carpenter Ants in Hayden Residences</h2>
+            <p class="t6-blog-card__excerpt">Understand why carpenter ants remain active inside Hayden homes during autumn and how to identify satellite nests in wood framing.</p>
+            <div class="t6-blog-card__divider"></div>
+            <div class="t6-blog-card__meta">
+              <span>November 2026</span>
+              <span>9 min read</span>
             </div>
-
-            <h2 style="font-size:clamp(1.6rem, 2.5vw, 2.2rem);margin:0 0 1rem;line-height:1.25;color:var(--t6-ink);">
-              Identifying the Difference: Nuisance Pavement Ants vs. Destructive Carpenter Ants
-            </h2>
-
-            <p style="font-size:1.08rem;line-height:1.75;color:var(--t6-text);margin-bottom:1.5rem;">
-              Finding trailing black insects along your kitchen backsplash or baseboards is universally irritating. However, the appropriate response depends entirely on what species is walking across your counter. While small pavement ants are searching for sugar spills, large carpenter ants may be chewing galleries directly inside structural wall framing.
-            </p>
-
-            <div class="t6-article-content">
-              <h3>Visual and Anatomical Differences</h3>
-              <p>
-                Homeowners often mistakenly classify every dark insect as a carpenter ant. Observing physical traits helps avoid unnecessary panic while ensuring actual wood-destroying infestations receive immediate professional care:
-              </p>
-              <ul>
-                <li><strong>Pavement Ants (<em>Tetramorium immigrans</em>):</strong> Small (roughly 1/8 inch), uniform dark brown to black, with two small nodes on their waist pedicel. They frequently nest under concrete slabs, patio pavers, and expansion joints, entering homes through minute slab cracks.</li>
-                <li><strong>Carpenter Ants (<em>Camponotus</em> spp.):</strong> Much larger (ranging from 1/4 inch to 1/2 inch or larger), featuring polymorphic workers of varied sizes. Under a magnifying glass, their thorax profile is evenly rounded without dips, and they possess a single waist node.</li>
-                <li><strong>Swarmers (Winged Reproductives):</strong> In spring, mature carpenter ant colonies release large winged swarmers. Finding winged specimens indoors near window sills is one of the most reliable indicators of an active parent or satellite nest within the building envelope.</li>
-              </ul>
-
-              <h3>Do Carpenter Ants Actually Eat Wood?</h3>
-              <p>
-                Contrary to popular belief, carpenter ants do not digest cellulose like termites. Instead, they excavate clean, smooth galleries inside lumber solely to create nesting cavities. Because they discard the extracted wood fragments, one of the unmistakable signatures of an active carpenter ant nest is "frass"—a sawdust-like accumulation containing shredded wood shavings and insect body parts piled beneath kickplates, sill plates, or damp window frames.
-              </p>
-
-              <div class="t6-pro-tip">
-                <p><strong>Why Store-Bought Sprays Backfire:</strong> Spraying repellent over-the-counter insecticides on visible ant trails kills a few dozen foraging workers but alerts the parent queen. In response, colonies frequently undergo "budding"—splitting into multiple satellite colonies throughout the house and multiplying the severity of the problem.</p>
-              </div>
-
-              <h3>Addressing Moisture: The Ultimate Deterrent</h3>
-              <p>
-                Carpenter ants struggle to excavate sound, dry lumber. In North Idaho's forested communities—such as Spirit Lake, Athol, and Sagle—nesting almost always originates where roof gutters overflow onto fascia boards, where plumbing slow-leaks dampen subflooring, or where firewood piles rest directly against exterior cedar siding. Eliminating wood-to-soil contact and repairing water leaks is the fundamental foundation of long-term ant control.
-              </p>
-            </div>
-
-            <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--t6-hairline);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
-              <span style="font-size:.9rem;color:var(--t6-muted);">Suspecting carpenter ant activity in your home?</span>
-              <a href="carpenter-ant-control" class="t6-btn t6-btn-primary" style="font-size:.92rem;padding:.65rem 1.25rem;">Explore Carpenter Ant Solutions &rarr;</a>
-            </div>
+            <span class="t6-blog-card__read-btn">Read Full Guide &rarr;</span>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <!-- Article 3 -->
-      <article id="spiders-wasps-eaves-garages" class="t6-blog-card" data-sal="slide-up">
-        <div style="display:grid;grid-template-columns:1fr;gap:0;">
-          <div style="aspect-ratio:16 / 7;position:relative;overflow:hidden;background:#222;">
-            <img src="assets/images/gen/our-expertise-in-spider-control-5a3b1b99.webp" alt="Close-up of spider web removal and exterior perimeter treatment along residential eaves" style="width:100%;height:100%;object-fit:cover;" loading="lazy" />
+        <!-- Card 3 -->
+        <article class="t6-blog-card" onclick="openBlogModal('modal-blog-3')" tabindex="0" role="button" aria-haspopup="dialog" onkeydown="if(event.key==='Enter'||event.key===' ')openBlogModal('modal-blog-3')">
+          <div class="t6-blog-card__image-wrap">
+            <img src="assets/images/gen/our-expertise-in-bed-bug-treatment.jpg" alt="Inspection and treatment of bedroom areas for bed bugs in Spirit Lake vacation rental" loading="lazy" />
           </div>
-          <div style="padding:clamp(1.75rem, 3.5vw, 3rem);">
-            <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;">
-              <span class="t6-badge-cat">Exterior Care &amp; Seasonal Defense</span>
-              <span style="font-size:.85rem;color:var(--t6-muted);display:inline-flex;align-items:center;gap:.35rem;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 5 Min Read
-              </span>
-              <span style="font-size:.85rem;color:var(--t6-muted);">Published: October 2026</span>
+          <div class="t6-blog-card__body">
+            <span class="t6-blog-card__category">PEST CONTROL</span>
+            <h2 class="t6-blog-card__title">How Spirit Lake Homeowners Can Prevent Winter Bed Bug Infestations</h2>
+            <p class="t6-blog-card__excerpt">Expert advice for Spirit Lake homeowners and vacation rental managers to prevent bed bug spread during winter travel and holidays.</p>
+            <div class="t6-blog-card__divider"></div>
+            <div class="t6-blog-card__meta">
+              <span>December 2026</span>
+              <span>10 min read</span>
             </div>
-
-            <h2 style="font-size:clamp(1.6rem, 2.5vw, 2.2rem);margin:0 0 1rem;line-height:1.25;color:var(--t6-ink);">
-              The Seasonal Guide to Managing Garages, Eaves, and Sheds for Spiders and Wasps
-            </h2>
-
-            <p style="font-size:1.08rem;line-height:1.75;color:var(--t6-text);margin-bottom:1.5rem;">
-              North Idaho properties are famous for generous covered porches, detached pole barns, and expansive overhangs. Unfortunately, these architectural features are also the premier nesting environments for paper wasps, yellow jackets, and predatory spiders. Taking proactive steps around exterior perimeters keeps your outdoor living spaces enjoyable and safe throughout the year.
-            </p>
-
-            <div class="t6-article-content">
-              <h3>Why Garages and Outbuildings Harbor Spiders</h3>
-              <p>
-                Unlike flies or mosquitoes, spiders are apex micro-predators. They do not invade outbuildings to consume human food; they settle where other small insects are plentiful and where human disturbance is minimal.
-              </p>
-              <p>
-                Garages offer dry cardboard boxes, dark corners under toolbenches, and quiet crevices beneath overhead door weatherstripping. Species common to our region—including wolf spiders, funnel-web hobo spiders, and occasionally black widows—take advantage of nighttime heat retention inside concrete slabs.
-              </p>
-
-              <h3>Breaking the Eave &amp; Lighting Food Chain</h3>
-              <p>
-                A high percentage of spider infestations beneath roof eaves and soffits are fueled by exterior lighting:
-              </p>
-              <ul>
-                <li><strong>Exterior Fixtures:</strong> Bright white and fluorescent porch lights draw hundreds of moths, gnats, and flying midges every summer evening. Spiders build webs directly over fixtures and under adjacent gutters to capitalize on the constant food delivery.</li>
-                <li><strong>Bulb Replacement Strategy:</strong> Switching exterior floodlights to warm-spectrum LED bulbs (2200K–2700K) or yellow bug lights drastically reduces flying insect attraction, cutting off the spider prey base.</li>
-                <li><strong>Routine Mechanical De-Webbing:</strong> Brushing down spider webbing and egg sacs every four to six weeks removes pheromone markers and forces arachnids away from entryways.</li>
-              </ul>
-
-              <div class="t6-pro-tip">
-                <p><strong>Wasp Timing Matters:</strong> In early spring, newly emerged fertilized queens build solitary umbrella-shaped paper nests. Treating or knocking down these initial small clusters in April and May prevents hundreds of aggressive workers from colonizing your roofline by August.</p>
-              </div>
-
-              <h3>Sealing the Entryways: Garage Door Seals &amp; Trim</h3>
-              <p>
-                The bottom rubber gasket on overhead garage doors frequently wears flat or becomes torn at the corners, leaving a gap up to one inch tall. Replacing worn weather seals and installing brush sweeps along the side tracks provides an effective physical block that prevents both spiders and cold-weather field mice from strolling inside during autumn.
-              </p>
-            </div>
-
-            <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--t6-hairline);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
-              <span style="font-size:.9rem;color:var(--t6-muted);">Need safe eave clearing or garage treatments?</span>
-              <a href="spider-control" class="t6-btn t6-btn-primary" style="font-size:.92rem;padding:.65rem 1.25rem;">View Spider &amp; Eave Services &rarr;</a>
-            </div>
+            <span class="t6-blog-card__read-btn">Read Full Guide &rarr;</span>
           </div>
-        </div>
-      </article>
+        </article>
+
+      </div>
 
     </div>
   </section>
+
+  <!-- Modal 1: Rodent Proofing Rathdrum -->
+  <div id="modal-blog-1" class="t6-modal" role="dialog" aria-modal="true" aria-labelledby="modal1-title" onclick="if(event.target===this)closeBlogModal('modal-blog-1')">
+    <div class="t6-modal__dialog">
+      <button type="button" class="t6-modal__close" aria-label="Close dialog" onclick="closeBlogModal('modal-blog-1')">&times;</button>
+      
+      <div style="aspect-ratio:16/9;border-radius:10px;overflow:hidden;margin-bottom:1.5rem;">
+        <img src="assets/images/gen/rodent-inspection-foundation.jpg" alt="Technician inspecting crawl space vents and foundation gaps" style="width:100%;height:100%;object-fit:cover;" />
+      </div>
+
+      <span style="font-family:var(--font-display);font-size:.8rem;font-weight:700;color:var(--t6-green-dark);text-transform:uppercase;letter-spacing:.12em;">LOCAL GUIDES &bull; RATHDRUM, ID</span>
+      <h2 id="modal1-title" style="font-size:clamp(1.5rem, 3vw, 2rem);margin:.5rem 0 1rem;line-height:1.25;color:var(--t6-ink);">Rodent Proofing Rathdrum Homes for the Coming Winter</h2>
+      <div style="font-size:.88rem;color:var(--t6-muted);margin-bottom:1.5rem;display:flex;gap:1.5rem;">
+        <span>Published: October 2026</span>
+        <span>10 Min Comprehensive Guide</span>
+      </div>
+
+      <div class="t6-modal-content">
+        <p>As the brisk autumn winds sweep across the Rathdrum Prairie and mountain foothills, field mice and Norway rats begin their seasonal migration. Outbuildings, shops, horse barns, and residential crawl spaces become prime targets for shelter before the ground freezes solid.</p>
+
+        <h3>Why Prairie Homes Face Unique Rodent Pressures</h3>
+        <p>Rathdrum properties often border open agricultural fields, wooded acreage, or newer prairie subdivisions. When harvest season concludes and wild vegetation goes dormant, food sources vanish rapidly. Rodents follow thermal drafts leaking from foundations, subfloor utility vents, and garage door thresholds.</p>
+        
+        <p>Because a standard house mouse can squeeze through an opening no larger than a dime, even microscopic gaps around newly settled construction offer effortless entrance.</p>
+
+        <h3>Critical Inspection Zones for Rathdrum Homeowners</h3>
+        <ul>
+          <li><strong>Foundation Vent Screens:</strong> Galvanized mesh often rusts or detaches from concrete footings. Mice gnaw directly through deteriorated mortar and wire.</li>
+          <li><strong>Overhead Garage Door Weatherstripping:</strong> The lower rubber seal along concrete driveways wears flat or cracks, leaving 1-inch openings at the track corners.</li>
+          <li><strong>AC Refrigerant and Well-Line Penetrations:</strong> Expandable spray foam alone does not stop rodents; rats can chew through standard polyurethane foam in minutes.</li>
+          <li><strong>Sill Plate Junctions &amp; Crawl Hatches:</strong> Unsealed gaps between the wooden rim joist and poured concrete walls provide direct highway access into heated wall cavities.</li>
+        </ul>
+
+        <div class="t6-modal-tip">
+          <p><strong>Professional Exclusion Standard:</strong> Never rely strictly on rodenticides. Poisoning rodents inside homes often leads to carcasses decomposing inside unreachable sheetrock or ductwork. Physical exclusion—packing penetrations with stainless steel mesh and securing vents with 1/4-inch heavy-gauge hardware cloth—is the only permanent solution.</p>
+        </div>
+
+        <h3>Seasonal Checklist Before Winter Arrives</h3>
+        <ul>
+          <li>Stack firewood at least 20 feet away from home siding and elevated off bare soil.</li>
+          <li>Cut back tall prairie grasses and mulch beds a minimum of 18 inches from foundation walls.</li>
+          <li>Inspect pet food storage in pole barns; store all grain and seed in chew-proof metal bins.</li>
+          <li>Check attic insulation for disturbed trails, droppings, or gnawed electrical wiring.</li>
+        </ul>
+      </div>
+
+      <div style="margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--t6-hairline);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <p style="margin:0;font-weight:700;color:var(--t6-ink);">Need a Professional Rathdrum Rodent Inspection?</p>
+          <p style="margin:0;font-size:.9rem;color:var(--t6-muted);">We examine foundations, crawl spaces, and seal active entry points.</p>
+        </div>
+        <a href="tel:+12082482701" class="t6-btn t6-btn-primary" style="padding:.65rem 1.25rem;font-size:.92rem;">Call (208) 248-2701</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Fall Carpenter Ants Hayden -->
+  <div id="modal-blog-2" class="t6-modal" role="dialog" aria-modal="true" aria-labelledby="modal2-title" onclick="if(event.target===this)closeBlogModal('modal-blog-2')">
+    <div class="t6-modal__dialog">
+      <button type="button" class="t6-modal__close" aria-label="Close dialog" onclick="closeBlogModal('modal-blog-2')">&times;</button>
+      
+      <div style="aspect-ratio:16/9;border-radius:10px;overflow:hidden;margin-bottom:1.5rem;">
+        <img src="assets/images/gen/detailed-macro-photography-of-a-camponotus-ant-o-2a2d4715.webp" alt="Carpenter ant worker on damaged wood frame in Hayden home" style="width:100%;height:100%;object-fit:cover;" />
+      </div>
+
+      <span style="font-family:var(--font-display);font-size:.8rem;font-weight:700;color:var(--t6-green-dark);text-transform:uppercase;letter-spacing:.12em;">PEST CONTROL &bull; HAYDEN, ID</span>
+      <h2 id="modal2-title" style="font-size:clamp(1.5rem, 3vw, 2rem);margin:.5rem 0 1rem;line-height:1.25;color:var(--t6-ink);">The Hidden Danger of Fall Carpenter Ants in Hayden Residences</h2>
+      <div style="font-size:.88rem;color:var(--t6-muted);margin-bottom:1.5rem;display:flex;gap:1.5rem;">
+        <span>Published: November 2026</span>
+        <span>9 Min Comprehensive Guide</span>
+      </div>
+
+      <div class="t6-modal-content">
+        <p>Many homeowners around Hayden Lake and Hayden proper assume that insect threats end with the first hard frost. Unfortunately, for wood-destroying carpenter ants (<em>Camponotus</em> spp.), autumn simply signals a transition to warm indoor nesting cavities.</p>
+
+        <h3>Parent Colonies vs. Indoor Satellite Nests</h3>
+        <p>In mature North Idaho pine and fir landscapes, parent carpenter ant colonies typically live outdoors in decaying stump roots or damp hollow trees. However, as outdoor temperatures drop, workers frequently establish warm "satellite nests" inside residential structures.</p>
+        
+        <p>These satellite colonies contain thousands of workers, mature pupae, and winged swarmers. They choose locations with slight moisture damage: behind shower enclosures, beneath leaky roof gutters, inside window headers, or around crawl space sill plates.</p>
+
+        <h3>Identifying the Unmistakable Sign: "Frass"</h3>
+        <p>Carpenter ants do not eat wood like termites; they excavate it to carve out smooth, clean nesting galleries. As they tunnel through structural studs and joists, they push discarded wood shavings out through small slit-like openings.</p>
+        <ul>
+          <li><strong>Appearance:</strong> Fine sawdust piles mixed with discarded insect parts and ant head capsules.</li>
+          <li><strong>Common Locations:</strong> Under basement sill plates, along garage baseboards, or resting on insulation beneath bathroom subfloors.</li>
+          <li><strong>Sound:</strong> In quiet rooms at night, large active colonies can produce a faint rustling or crinkling sound inside drywall as thousands of ants move through wood galleries.</li>
+        </ul>
+
+        <div class="t6-modal-tip">
+          <p><strong>Warning on Over-the-Counter Sprays:</strong> Spraying repellent store-bought aerosols on foraging trails kills only a tiny fraction of workers while triggering colony defense. The queen responds by "budding"—dispersing satellite nests into multiple walls, compounding the structural damage.</p>
+        </div>
+
+        <h3>Effective Hayden Lake Moisture &amp; Ant Control</h3>
+        <p>Effective defense combines eliminating moisture vulnerabilities (clearing pine needles from roof valleys, repairing plumbing leaks) with non-repellent transfer treatments that foraging ants carry directly back to eradicate the central queen.</p>
+      </div>
+
+      <div style="margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--t6-hairline);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <p style="margin:0;font-weight:700;color:var(--t6-ink);">Suspecting Carpenter Ants in Your Hayden Home?</p>
+          <p style="margin:0;font-size:.9rem;color:var(--t6-muted);">Targeted moisture inspections and non-repellent colony treatments.</p>
+        </div>
+        <a href="tel:+12082482701" class="t6-btn t6-btn-primary" style="padding:.65rem 1.25rem;font-size:.92rem;">Call (208) 248-2701</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Winter Bed Bugs Spirit Lake -->
+  <div id="modal-blog-3" class="t6-modal" role="dialog" aria-modal="true" aria-labelledby="modal3-title" onclick="if(event.target===this)closeBlogModal('modal-blog-3')">
+    <div class="t6-modal__dialog">
+      <button type="button" class="t6-modal__close" aria-label="Close dialog" onclick="closeBlogModal('modal-blog-3')">&times;</button>
+      
+      <div style="aspect-ratio:16/9;border-radius:10px;overflow:hidden;margin-bottom:1.5rem;">
+        <img src="assets/images/gen/our-expertise-in-bed-bug-treatment.jpg" alt="Inspection of bedding and mattress seams for bed bugs" style="width:100%;height:100%;object-fit:cover;" />
+      </div>
+
+      <span style="font-family:var(--font-display);font-size:.8rem;font-weight:700;color:var(--t6-green-dark);text-transform:uppercase;letter-spacing:.12em;">PEST CONTROL &bull; SPIRIT LAKE, ID</span>
+      <h2 id="modal3-title" style="font-size:clamp(1.5rem, 3vw, 2rem);margin:.5rem 0 1rem;line-height:1.25;color:var(--t6-ink);">How Spirit Lake Homeowners Can Prevent Winter Bed Bug Infestations</h2>
+      <div style="font-size:.88rem;color:var(--t6-muted);margin-bottom:1.5rem;display:flex;gap:1.5rem;">
+        <span>Published: December 2026</span>
+        <span>10 Min Comprehensive Guide</span>
+      </div>
+
+      <div class="t6-modal-content">
+        <p>With its scenic wooded shoreline, charming vacation cabins, and winter recreation draw, Spirit Lake sees a high volume of seasonal guests, holiday family gatherings, and winter travel. Unfortunately, increased travel brings along the risk of bed bug infestations.</p>
+
+        <h3>Why Winter Is a Peak Risk Window</h3>
+        <p>Bed bugs do not jump or fly; they are obligate hitchhikers. During the holidays, luggage, coats, secondhand furniture, and guest bedding become primary vehicles for transmission between hotels, rental cabins, and residential homes.</p>
+
+        <p>Unlike mosquitoes or wasps that hibernate or die off in freezing temperatures, bed bugs live entirely within temperature-controlled human dwellings. Inside heated bedrooms, baseboards, and upholstered sofas, their lifecycle continues completely uninterrupted throughout the winter months.</p>
+
+        <h3>The Essential Inspection Protocol</h3>
+        <ul>
+          <li><strong>Mattress Piping &amp; Seams:</strong> Use a bright LED flashlight to inspect the welt cord seams along the top and bottom of mattresses and box springs.</li>
+          <li><strong>Headboards &amp; Frame Hardware:</strong> Wooden joints, screw holes, and wall-mounted headboards are among the top harborage areas where nymphs cluster.</li>
+          <li><strong>Fecal Spotting:</strong> Small, dark brown to black ink-like dots on bed linens or mattress tags indicating digested blood.</li>
+          <li><strong>Electrical Faceplates:</strong> In severe infestations, bed bugs retreat behind bedroom outlet covers to travel between adjoining rooms.</li>
+        </ul>
+
+        <div class="t6-modal-tip">
+          <p><strong>Post-Travel Laundry Rule:</strong> Upon returning from winter holiday travel or hosting guests, immediately wash all clothing and linens in hot water and run them through a high-heat dryer cycle for at least 35 minutes. Heat is universally lethal to bed bugs and their eggs at all life stages.</p>
+        </div>
+
+        <h3>Discreet, Label-Compliant Professional Remediation</h3>
+        <p>Because bed bugs have developed widespread resistance to common pyrethroid bug bombs, consumer aerosol cans generally fail to eradicate eggs and cause surviving bugs to scatter deeper into wall cavities. Professional control combines precision targeted application, crack-and-crevice residual treatments, and follow-up inspections to guarantee complete eradication.</p>
+      </div>
+
+      <div style="margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--t6-hairline);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <p style="margin:0;font-weight:700;color:var(--t6-ink);">Need Discreet Bed Bug Inspection in Spirit Lake?</p>
+          <p style="margin:0;font-size:.9rem;color:var(--t6-muted);">Complete lifecycle treatments for homes, cabins, and rentals.</p>
+        </div>
+        <a href="tel:+12082482701" class="t6-btn t6-btn-primary" style="padding:.65rem 1.25rem;font-size:.92rem;">Call (208) 248-2701</a>
+      </div>
+    </div>
+  </div>
 
   <!-- Final Call to Action -->
   <section class="t6-band-green" style="padding:4.5rem 0;">
@@ -604,7 +760,7 @@
       <div data-sal="slide-up" style="max-width:760px;margin:0 auto;">
         <h2 style="color:#fff;margin:0 0 1rem;font-size:clamp(1.9rem, 3.5vw, 2.6rem);">Have Questions About Pest Activity Around Your Home?</h2>
         <p style="color:rgba(255,255,255,.94);font-size:1.1rem;line-height:1.65;margin:0 auto 2rem;max-width:640px;">
-          Whether you have spotted carpenter ant frass, heard scratching in the attic, or noticed wasp nests beneath the eaves, our licensed Idaho technicians are ready to help with thorough inspections and targeted treatment plans.
+          Whether you need rodent exclusion in Rathdrum, carpenter ant treatment in Hayden, or inspection in Spirit Lake, our licensed Idaho technicians are ready to assist.
         </p>
         <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
           <a href="tel:+12082482701" class="t6-btn" style="background:#fff;color:var(--t6-ink);font-weight:700;">
@@ -716,7 +872,32 @@
     Get Free Quote
   </a>
 </div>
-    <script src="https://unpkg.com/sal.js"></script>
-    <script src="assets/js/main.js"></script>
-  </body>
+
+<script>
+  function openBlogModal(id) {
+    var modal = document.getElementById(id);
+    if (modal) {
+      modal.classList.add('is-active');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+  function closeBlogModal(id) {
+    var modal = document.getElementById(id);
+    if (modal) {
+      modal.classList.remove('is-active');
+      document.body.style.overflow = '';
+    }
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.t6-modal.is-active').forEach(function(m) {
+        m.classList.remove('is-active');
+      });
+      document.body.style.overflow = '';
+    }
+  });
+</script>
+<script src="https://unpkg.com/sal.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
 </html>
