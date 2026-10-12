@@ -41,4 +41,12 @@ Official website for **North Idaho Pest Control**, providing local pest control 
 - `vercel.json` - Vercel clean URL & redirect configuration
 - `sitemap.xml` - XML sitemap listing all 24 canonical pages
 - `robots.txt` - Search engine crawler directives
+
+---
+
+## Features & SEO
+- **Structured Data:** FAQPage & LocalBusiness JSON-LD schemas across all 10 location pages
+- **Localized Content:** Tailored pest prevention questions and answers for each North Idaho community
+- **Responsive Design:** Mobile-first layout with high-conversion quote and call CTAs
+
 
