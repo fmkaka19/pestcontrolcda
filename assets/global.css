@@ -574,6 +574,105 @@ h4 { font-size: 1.1rem; font-weight: 600; }
 .t6-faq-item:not([open]) .t6-faq-toggle::before { content: "+"; }
 .t6-faq-body { color: var(--t6-muted); padding-top: 0.85rem; line-height: 1.7; font-size: 0.97rem; }
 
+/* ---------- Accordion / Location & Service FAQs ---------- */
+.t6-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.t6-accordion-item {
+  background: var(--t6-cream);
+  border: 1px solid var(--t6-hairline);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.t6-accordion-item + .t6-accordion-item {
+  margin-top: 0.85rem;
+}
+.t6-accordion-item[open] {
+  border-color: var(--t6-green) !important;
+  box-shadow: 0 4px 16px rgba(23,34,7,0.05);
+}
+.t6-accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 1.4rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: var(--t6-ink);
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+.t6-accordion-trigger::-webkit-details-marker {
+  display: none;
+}
+.t6-accordion-trigger::marker {
+  display: none;
+}
+.t6-accordion-arrow {
+  transition: transform .25s ease;
+  flex-shrink: 0;
+  color: var(--t6-ink);
+}
+.t6-accordion-item[open] .t6-accordion-arrow {
+  transform: rotate(180deg);
+  color: var(--t6-green-dark);
+}
+.t6-accordion-body {
+  padding: 0 1.4rem 1.35rem;
+  color: var(--t6-text);
+  font-size: .95rem;
+  line-height: 1.68;
+  border-top: 1px solid rgba(23,34,7,0.06);
+  margin-top: .2rem;
+  padding-top: 1rem;
+}
+.t6-accordion-body p {
+  margin: 0;
+}
+
+/* Fallback for t6-faq class */
+.t6-faq {
+  background: var(--t6-cream);
+  border: 1px solid var(--t6-hairline);
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 1.15rem 1.4rem;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.t6-faq + .t6-faq {
+  margin-top: 0.85rem;
+}
+.t6-faq[open] {
+  border-color: var(--t6-green) !important;
+  box-shadow: 0 4px 16px rgba(23,34,7,0.05);
+}
+.t6-faq summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: var(--t6-ink);
+  user-select: none;
+}
+.t6-faq summary::-webkit-details-marker {
+  display: none;
+}
+.t6-faq summary::marker {
+  display: none;
+}
+
+
 /* ---------- Sticky / mobile CTA ---------- */
 .t6-mobile-cta {
   position: fixed;
