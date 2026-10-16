@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pest Images Gallery</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 2rem 1rem;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    header {
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.2rem;
+      color: #4ade80;
+      margin-bottom: 0.5rem;
+    }
+    p.subtitle {
+      color: #94a3b8;
+      font-size: 1.05rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.75rem;
+    }
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #4ade80;
+    }
+    .img-wrap {
+      width: 100%;
+      height: 240px;
+      background: #090d16;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      cursor: pointer;
+      transition: transform 0.25s ease;
+    }
+    .img-wrap img:hover {
+      transform: scale(1.05);
+    }
+    .content {
+      padding: 1.25rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 0.4rem;
+    }
+    .desc {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      flex: 1;
+    }
+    .meta {
+      font-family: monospace;
+      font-size: 0.82rem;
+      background: #0f172a;
+      padding: 0.4rem 0.6rem;
+      border-radius: 6px;
+      color: #38bdf8;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Pest Control Image Collection</h1>
+      <p class="subtitle">5 High-Quality Photos for Service Pages &amp; Identification</p>
+    </header>
+
+    <div class="grid">
+      <!-- 1 -->
+      <div class="card">
+        <div class="img-wrap">
+          <a href="01-carpenter-ant-wood-damage.jpg" target="_blank">
+            <img src="01-carpenter-ant-wood-damage.jpg" alt="Carpenter Ant Wood Damage">
+          </a>
+        </div>
+        <div class="content">
+          <div class="title">1. Carpenter Ant Wood Damage</div>
+          <div class="desc">Damaged wooden door frame and studs with extensive excavation tunnels and frass. Ideal for Carpenter Ant page.</div>
+          <div class="meta">pest-images/01-carpenter-ant-wood-damage.jpg</div>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="card">
+        <div class="img-wrap">
+          <a href="02-german-cockroach.jpg" target="_blank">
+            <img src="02-german-cockroach.jpg" alt="German Cockroach">
+          </a>
+        </div>
+        <div class="content">
+          <div class="title">2. German Cockroach</div>
+          <div class="desc">Close-up photograph of an adult German cockroach with visible pronotal stripes. Ideal for Roach Control page.</div>
+          <div class="meta">pest-images/02-german-cockroach.jpg</div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="card">
+        <div class="img-wrap">
+          <a href="03-carpenter-ant-closeup.jpg" target="_blank">
+            <img src="03-carpenter-ant-closeup.jpg" alt="Carpenter Ant Macro Close-Up">
+          </a>
+        </div>
+        <div class="content">
+          <div class="title">3. Carpenter Ant Macro Close-Up</div>
+          <div class="desc">High-detail macro shot showing head, powerful mandibles, and antennae of a Camponotus carpenter ant.</div>
+          <div class="meta">pest-images/03-carpenter-ant-closeup.jpg</div>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="card">
+        <div class="img-wrap">
+          <a href="04-pest-macro-beetle-bug.jpg" target="_blank">
+            <img src="04-pest-macro-beetle-bug.jpg" alt="Pest Insect Macro">
+          </a>
+        </div>
+        <div class="content">
+          <div class="title">4. Small Insect / Beetle Macro</div>
+          <div class="desc">High magnification view of small household pest on fabric. Useful for carpet beetle / flea / bed bug context.</div>
+          <div class="meta">pest-images/04-pest-macro-beetle-bug.jpg</div>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="card">
+        <div class="img-wrap">
+          <a href="05-rodents-mice-kitchen-sink.jpg" target="_blank">
+            <img src="05-rodents-mice-kitchen-sink.jpg" alt="Mice / Rats in Kitchen Sink">
+          </a>
+        </div>
+        <div class="content">
+          <div class="title">5. Rodents (Rats / Mice) at Kitchen Sink</div>
+          <div class="desc">Two rodents climbing around cookware and dishes by a kitchen sink. Perfect for Rodent Control page.</div>
+          <div class="meta">pest-images/05-rodents-mice-kitchen-sink.jpg</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
